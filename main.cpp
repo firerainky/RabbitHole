@@ -1,4 +1,4 @@
-#include "AdderLib/adder.h"
+#include "adder.h"
 #include <iostream>
 
 int main() {
