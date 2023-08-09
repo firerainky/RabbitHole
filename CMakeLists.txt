@@ -9,4 +9,6 @@ set(LIB_NAME AdderLib)
 add_subdirectory(${LIB_NAME})
 target_link_libraries(${PROJECT_NAME} PRIVATE ${LIB_NAME})
 
+add_subdirectory(external/glfw)
+
 install(TARGETS ${PROJECT_NAME} DESTINATION bin)
