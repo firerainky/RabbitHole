@@ -1,6 +1,8 @@
 cmake_minimum_required(VERSION 3.13.4)
 
-project(TestInclude)
+project(TestInclude VERSION 1.0)
+
+configure_file(RabbitConfig.h.in RabbitConfig.h)
 
 add_executable(${PROJECT_NAME} main.cpp)
 
@@ -29,7 +31,7 @@ if(NOT EXISTS "${CMAKE_CURRENT_SOURCE_DIR}/external/glfw/CMakeLists.txt")
 endif()
 add_subdirectory(external/glfw)
 
-target_include_directories(${PROJECT_NAME} PRIVATE ${LIB_NAME} PRIVATE external/glfw/include)
+target_include_directories(${PROJECT_NAME} PRIVATE ${LIB_NAME} external/glfw/include build)
 target_link_libraries(${PROJECT_NAME} PRIVATE ${LIB_NAME} glfw)
 
 

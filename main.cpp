@@ -1,11 +1,15 @@
-#include "adder.h"
+#include <RabbitConfig.h>
+#include <adder.h>
 #include <GLFW/glfw3.h>
 #include <iostream>
 
-int main() {
+int main(int argc, char **argv) {
   zky::add(2, 3);
   std::cout << "Hello, rabbit hole."
             << "\n";
+
+  std::cout << argv[0] << " Version " << RABBIT_VERSION_MAJOR << "."
+            << RABBIT_VERSION_MINOR << "\n";
 
   GLFWwindow *window;
 
