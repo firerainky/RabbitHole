@@ -7,8 +7,10 @@ add_executable(${PROJECT_NAME} main.cpp)
 set(LIB_NAME AdderLib)
 
 add_subdirectory(${LIB_NAME})
-target_link_libraries(${PROJECT_NAME} PRIVATE ${LIB_NAME})
-
 add_subdirectory(external/glfw)
+
+target_include_directories(${PROJECT_NAME} PRIVATE ${LIB_NAME} PRIVATE external/glfw/include)
+target_link_libraries(${PROJECT_NAME} PRIVATE ${LIB_NAME} glfw)
+
 
 install(TARGETS ${PROJECT_NAME} DESTINATION bin)
