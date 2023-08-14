@@ -4,7 +4,12 @@
 #include <iostream>
 
 int main(int argc, char **argv) {
-  zky::add(2, 3);
+  #ifdef USE_ADDER
+    zky::add(2, 3);
+  #else
+      std::cout << "No adder."
+                << "\n";
+  #endif
   std::cout << "Hello, rabbit hole."
             << "\n";
 

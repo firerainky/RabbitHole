@@ -1,2 +1,8 @@
 #define RABBIT_VERSION_MAJOR @TestInclude_VERSION_MAJOR@
 #define RABBIT_VERSION_MINOR @TestInclude_VERSION_MINOR@
+
+#cmakedefine USE_ADDER
+
+#ifdef USE_ADDER
+  #include <adder.h>
+#endif

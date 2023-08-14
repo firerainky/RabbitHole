@@ -2,13 +2,17 @@ cmake_minimum_required(VERSION 3.13.4)
 
 project(TestInclude VERSION 1.0)
 
+option(USE_ADDER "Use adder library" ON)
 configure_file(RabbitConfig.h.in RabbitConfig.h)
 
 add_executable(${PROJECT_NAME} main.cpp)
 
-set(LIB_NAME AdderLib)
-
-add_subdirectory(${LIB_NAME})
+if(USE_ADDER)
+    set(LIB_NAME AdderLib)
+    add_subdirectory(${LIB_NAME})
+    target_include_directories(${PROJECT_NAME} PRIVATE ${LIB_NAME})
+    target_link_libraries(${PROJECT_NAME} PRIVATE ${LIB_NAME})
+endif()
 
 find_package(Git QUIET)
 if (GIT_FOUND AND EXISTS "${PROJECT_SOURCE_DIR}/.git")
@@ -31,8 +35,8 @@ if(NOT EXISTS "${CMAKE_CURRENT_SOURCE_DIR}/external/glfw/CMakeLists.txt")
 endif()
 add_subdirectory(external/glfw)
 
-target_include_directories(${PROJECT_NAME} PRIVATE ${LIB_NAME} external/glfw/include build)
-target_link_libraries(${PROJECT_NAME} PRIVATE ${LIB_NAME} glfw)
+target_include_directories(${PROJECT_NAME} PRIVATE external/glfw/include build)
+target_link_libraries(${PROJECT_NAME} PRIVATE glfw)
 
 
 install(TARGETS ${PROJECT_NAME} DESTINATION bin)
