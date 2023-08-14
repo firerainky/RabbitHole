@@ -37,7 +37,7 @@ if(NOT EXISTS "${CMAKE_CURRENT_SOURCE_DIR}/external/glfw/CMakeLists.txt")
 endif()
 add_subdirectory(external/glfw)
 
-target_include_directories(${PROJECT_NAME} PRIVATE external/glfw/include build ${EXTRA_INCLUDES})
+target_include_directories(${PROJECT_NAME} PRIVATE external/glfw/include ${PROJECT_BINARY_DIR} ${EXTRA_INCLUDES})
 target_link_libraries(${PROJECT_NAME} PRIVATE glfw ${EXTRA_LIBS})
 
 
