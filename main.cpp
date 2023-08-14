@@ -1,7 +1,10 @@
 #include <RabbitConfig.h>
-#include <adder.h>
 #include <GLFW/glfw3.h>
 #include <iostream>
+
+#ifdef USE_ADDER
+  #include <adder.h>
+#endif
 
 int main(int argc, char **argv) {
   #ifdef USE_ADDER
