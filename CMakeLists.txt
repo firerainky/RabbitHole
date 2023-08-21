@@ -2,6 +2,18 @@ cmake_minimum_required(VERSION 3.13.4)
 
 project(TestInclude VERSION 1.0)
 
+# find_library, the first two arguments are the name of the variable and the name of the library.
+# The 'NAMES' option is used to specify the name of the library to search for.
+# By default, find_library is searching for a library in the default paths for the system.
+# But also we can specify the path to the library using the 'PATHS' option. 
+find_library(myglewlib glew NAMES glew2 GLEW GLEW2 DOC "glew library")
+
+if (${myglewlib} STREQUAL "myglewlib-NOTFOUND")
+    message(FATAL_ERROR "no glew, sad guy ${myglewlib}")
+else()
+    message(STATUS "glew found! as ${myglewlib}")
+endif()
+
 option(USE_ADDER "Use adder library" OFF)
 configure_file(RabbitConfig.h.in RabbitConfig.h)
 
