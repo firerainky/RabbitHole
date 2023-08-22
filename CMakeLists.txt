@@ -14,6 +14,8 @@ else()
     message(STATUS "glew found! as ${myglewlib}")
 endif()
 
+# find_package needs a config.cmake file to be able to let CMake to find the package.
+
 option(USE_ADDER "Use adder library" OFF)
 configure_file(RabbitConfig.h.in RabbitConfig.h)
 
